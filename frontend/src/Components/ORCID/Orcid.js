@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useSelector } from 'react';
 import { connect } from 'react-redux';
 // import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
@@ -11,6 +11,12 @@ import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
 import { addOrcidData } from './OrcidSlice';
 import { useDispatch } from 'react-redux';
+import { QRCodeSVG } from 'qrcode.react';
+import {
+    addOrcidDataSvg,
+    orcidSvg
+} from './OrcidSvgSlice';
+
 
 function Orcid() {
     const dispatch = useDispatch();
@@ -33,6 +39,23 @@ function Orcid() {
             );
         };
     };
+
+    const showOrcid = (e) => {
+        e.preventDefault();
+        dispatch(
+            addOrcidDataSvg({
+                orcidURL,
+            })
+        )
+    }
+
+    // const orcidSvgData = useSelector(orcidSvg);
+    // const orcidSvgDataQrcode = orcidSvgData (() => (
+    //     <div>
+    //         <QRCodeSVG value={orcidURL}/>
+    //     </div>
+    // ))
+
 
     // const addorcid = () => {
     //     if (orcidURL === "") {
@@ -109,7 +132,7 @@ function Orcid() {
                                 <Button variant="outlined" href="#contained-buttons" onClick={addorcid} >
                                     Save
                                 </Button>
-                                <Button variant="outlined" >
+                                <Button variant="outlined" onClick={showOrcid}>
                                     Generate ORCID qrcode
                                 </Button>
                             </Stack>

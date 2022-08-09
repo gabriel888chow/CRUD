@@ -95,7 +95,8 @@ function Create() {
     )
     );
 
-    // console.log(vCardQrcodesTable, "777777")
+    // console.log("vCardQrcodesTable", vCardQrcodesTable)
+    console.log("selectvCardQrcodeList", ...selectvCardQrcodeList)
 
     // console.log(vCardQrcodesTable.slice(), "slice22222222");
     // console.log(vCardQrcodesTable.slice(vCardQrcodesTable.length - 1), "slice33333333");
@@ -109,68 +110,48 @@ function Create() {
         if (vCardQrcodesTable.length > 0) {
             return vCardObject;
         }
-        // console.log(vCardObject, "vCardObject")
-
     }
-    // console.log(getObject(), "herrrrrr")
+    console.log(getObject(), "getObject")
+
+    const vCardSvg = vCardQrcodesTable.slice(vCardQrcodesTable.length - 1)
+    const canvas = createCanvas(700, 700, "svg")
+    QRCode.toCanvas(canvas, vCardSvg, { width: 500, errorCorrectionLevel: 'H', type: "svg" })
+    console.log(vCardSvg, "vCardSvg.toString()")
+    console.log(canvas.toDataURL(), "URL")
+
+    function save(filename, data) {
+        const blob = new Blob([data], {type: 'image/svg+xml' });
+        if(window.navigator.msSaveOrOpenBlob) {
+            window.navigator.msSaveBlob(blob, filename);
+        }
+        else{
+            const elem = window.document.createElement('a');
+            elem.href = canvas.toDataURL();
+            elem.download = filename;        
+            document.body.appendChild(elem);
+            elem.click();        
+            document.body.removeChild(elem);
+        }
+    }
 
 
-
-
-    // function getObjectTo() {
+    // const onDownload = () => {
     //     const vCardObject = vCardQrcodesTable.slice(vCardQrcodesTable.length - 1);
-    //     if (vCardQrcodesTable.length > 0) {
-    //         return vCardObject;
-    //     }
-    //     console.log(vCardObject, "vCardObject")
-
+    //     console.log(vCardObject, "vCardObject22222222222222222222222222222222222222")
     //     const canvas = createCanvas(700, 700, "svg")
-    //     QRCode.toCanvas(canvas, vCardObject.toString(), { width: 500, errorCorrectionLevel: 'H', type: "svg" })
-
-    // }
-
-
-
-    // const vCardObject = vCardQrcodesTable.slice(vCardQrcodesTable.length - 1);
-
-    // console.log(getObject(), "functionHiiii");
-
-    // const vCardObject1 = QRCode.toDataURL(vCardObject)
-    // .then(url => {
-    //   console.log(url, "url1111111111111")
-    // })
-    // .catch(err => {
-    //   console.error(err)
-    // })
-
-    // const savesvgURL = QRCode.toDataURL('Some text', {
-    //     type: 'svg',
-    //     color: {
-    //         dark: '#00F',  // Blue dots
-    //         light: '#0000' // Transparent background
-    //     }
-    // }, function (err) {
-    //     if (err) throw err
-    //     console.log('done')
-    // })
+        
+    //     const can = QRCode.toCanvas(canvas, vCardObject.toString(), { width: 500, errorCorrectionLevel: 'H', type: "svg" }, function (error) {
+    //         if (error) console.error(error)
+    //         console.log('success!');
+    //       })
+    //     console.log("can", can)
 
 
-
-    // const savesvg = () => {
-    //     saveAs("", "image.jpg");
-    // }
-
-    const onDownload = () => {
-        const vCardObject = vCardQrcodesTable.slice(vCardQrcodesTable.length - 1);
-        console.log(vCardObject, "vCardObject22222222222222222222222222222222222222")
-        const canvas = createCanvas(700, 700, "svg")
-        QRCode.toCanvas(canvas, vCardObject.toString(), { width: 500, errorCorrectionLevel: 'H', type: "svg" })
-        const link = document.createElement("a");
-        link.download = `download.png`;
-        link.href = canvas.toDataURL();
-        link.click();
-
-    };
+    //     const link = document.createElement("a");
+    //     link.download = `download.svg`;
+    //     link.href = can;
+    //     link.click();
+    // };
 
 
     // const addnamecard = () => {
@@ -227,239 +208,239 @@ function Create() {
         };
     };
 
-        return (
-            <Container maxWidth="lx" >
-                <Grid container spacing={2}>
-                    <Grid item xs={8}>
+    return (
+        <Container maxWidth="lx" >
+            <Grid container spacing={2}>
+                <Grid item xs={8}>
 
-                        <Paper
-                            elevation={0}
-                            variant="outlined"
-                            sx={{
-                                m: 2,
-                                p: 4,
-                                border: "1px solid grey",
-                            }}
-                        >
-
-
-                            <Grid container spacing={2}>
-                                {/* -------------------------------------------------------------------Title------------------------------------------------------------------ */}
-                                <Grid item xs={12}>
-                                    <Typography variant='h4' align="center">
-                                        vCard QR Code Generator
-                                    </Typography>
-                                </Grid>
-                                {/* -------------------------------------------------------------------Title------------------------------------------------------------------ */}
-
-                                {/* -------------------------------------------------------------------In Eng------------------------------------------------------------------ */}
-                                <Grid item xs={12}>
-                                    <Typography variant='h4' align="start" >
-                                        vCard (In English)
-                                    </Typography>
-                                </Grid>
-                                {/* -------------------------------------------------------------------In Eng------------------------------------------------------------------ */}
-
-                                {/* -------------------------------------------------------------------1st row------------------------------------------------------------------ */}
-                                <Grid item xs={12} sm={6} md={6} xl={6}>
-                                    <TextField
-                                        required
-                                        id="FirstName"
-                                        label="First Name"
-                                        size="small"
-                                        multiline
-                                        maxRows={2}
-                                        onChange={(event) => { setFirstName(event.target.value); }}
-                                        value={firstname}
-                                        fullWidth
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} sm={6} md={6} xl={6}>
-                                    <TextField
-                                        required
-                                        id="LastName"
-                                        label="Last Name"
-                                        size="small"
-                                        multiline
-                                        maxRows={2}
-                                        onChange={(event) => { setLastName(event.target.value); }}
-                                        value={lastname}
-                                        fullWidth
-                                    />
-                                </Grid>
+                    <Paper
+                        elevation={0}
+                        variant="outlined"
+                        sx={{
+                            m: 2,
+                            p: 4,
+                            border: "1px solid grey",
+                        }}
+                    >
 
 
-                                {/* -------------------------------------------------------------------1st row------------------------------------------------------------------ */}
-
-                                {/* -------------------------------------------------------------------2nd row------------------------------------------------------------------ */}
-                                <Grid item xs={12} sm={6} md={6} xl={6}>
-                                    <TextField
-                                        required
-                                        id="Department"
-                                        label="Department"
-                                        size="small"
-                                        multiline
-                                        maxRows={2}
-                                        onChange={(event) => { setDepartment(event.target.value); }}
-                                        value={department}
-                                        fullWidth
-                                    />
-                                </Grid>
-
-
-
-                                <Grid item xs={12} sm={6} md={6} xl={6}>
-                                    <TextField
-                                        required
-                                        id="JobTitle"
-                                        label="Job Title"
-                                        size="small"
-                                        multiline
-                                        maxRows={2}
-                                        onChange={(event) => { setJobTitle(event.target.value); }}
-                                        value={jobtitle}
-                                        fullWidth
-                                    />
-                                </Grid>
-                                {/* -------------------------------------------------------------------2nd row------------------------------------------------------------------ */}
-
-
-                                {/* -------------------------------------------------------------------3rd row------------------------------------------------------------------ */}
-                                <Grid item xs={12} sm={4} md={4} xl={4}>
-                                    <TextField
-                                        required
-                                        id="Email"
-                                        label="Email"
-                                        size="small"
-                                        multiline
-                                        maxRows={2}
-                                        onChange={(event) => { setEmail(event.target.value); }}
-                                        value={email}
-                                        fullWidth
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} sm={4} md={4} xl={4}>
-                                    <TextField
-                                        required
-                                        id="OfficePhoneNumber"
-                                        label="Office Phone Number"
-                                        size="small"
-                                        multiline
-                                        maxRows={2}
-                                        onChange={(event) => { setOfficePhoneNumber(event.target.value); }}
-                                        value={officephonenumber}
-                                        fullWidth
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} sm={4} md={4} xl={4}>
-                                    <TextField
-                                        required
-                                        id="MobilePhoneNumber"
-                                        label="Mobile Phone Number"
-                                        size="small"
-                                        multiline
-                                        maxRows={2}
-                                        onChange={(event) => { setMobilePhoneNumber(event.target.value); }}
-                                        value={mobilephonenumber}
-                                        fullWidth
-                                    />
-                                </Grid>
-                                {/* -------------------------------------------------------------------3rd row------------------------------------------------------------------ */}
-
-                                {/* -------------------------------------------------------------------4th row------------------------------------------------------------------ */}
-                                <Grid item xs={12} sm={4} md={4} xl={4}>
-                                    <TextField
-                                        required
-                                        id="Organization"
-                                        label="Organization"
-                                        size="small"
-                                        defaultValue="The Hong Kong Polytechnic University"
-                                        multiline
-                                        maxRows={2}
-                                        onChange={(event) => { setOrganization(event.target.value); }}
-                                        value={organization}
-                                        fullWidth
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} sm={4} md={4} xl={4}>
-                                    <TextField
-                                        required
-                                        id="URLaddress"
-                                        label="URL Address"
-                                        size="small"
-                                        defaultValue="www.polyu.edu.hk"
-                                        multiline
-                                        maxRows={2}
-                                        onChange={(event) => { setURLaddress(event.target.value); }}
-                                        value={urladdress}
-                                        fullWidth
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} sm={4} md={4} xl={4}>
-                                    <TextField
-                                        required
-                                        id="Address"
-                                        label="Address"
-                                        size="small"
-                                        multiline
-                                        maxRows={2}
-                                        onChange={(event) => { setAddress(event.target.value); }}
-                                        value={address}
-                                        fullWidth
-                                    />
-                                </Grid>
-
-                                {/* -------------------------------------------------------------------4th row------------------------------------------------------------------ */}
-
-
-                                {/* -------------------------------------------------------------------5th row------------------------------------------------------------------ */}
-                                <Grid item xs={4} >
-                                    <Button variant="outlined" href="#contained-buttons">
-                                        <Link to="/" activeclassname="active" style={{ textDecoration: "none", color: "#A02337" }}>
-                                            Back
-                                        </Link>
-                                    </Button>
-                                </Grid>
-
-
-                                <Grid item xs={8} spacing={2} >
-                                    <Stack spacing={2} direction="row" justifyContent="flex-end">
-                                        <Button variant="outlined" href="#contained-buttons" onClick={addnamecard}>
-                                            Save
-                                        </Button>
-
-                                        <Button variant="outlined" onClick={createVcardQrCodeHandler}>
-                                            {/* <Button variant="contained" href="#contained-buttons" onClick={addEmployee}> */}
-                                            Generate vCard QrCode
-                                        </Button>
-                                    </Stack>
-                                </Grid>
-                                {/* -------------------------------------------------------------------5th row------------------------------------------------------------------ */}
-
-
+                        <Grid container spacing={2}>
+                            {/* -------------------------------------------------------------------Title------------------------------------------------------------------ */}
+                            <Grid item xs={12}>
+                                <Typography variant='h4' align="center">
+                                    vCard QR Code Generator
+                                </Typography>
                             </Grid>
-                        </Paper>
-                    </Grid>
+                            {/* -------------------------------------------------------------------Title------------------------------------------------------------------ */}
 
-                    <Grid item xs={4}>
-                        <Paper
-                            elevation={0}
-                            variant="outlined"
-                            sx={{
-                                m: 2,
-                                p: 4,
-                                border: "1px solid grey",
-                                height: 376.469
-                            }}
-                        >
-                            <Typography variant='h4' align="center" >
-                                vCard QR Code In English
-                                {/* {getVcardDataInEnglish.map((val, key) => {
+                            {/* -------------------------------------------------------------------In Eng------------------------------------------------------------------ */}
+                            <Grid item xs={12}>
+                                <Typography variant='h4' align="start" >
+                                    vCard (In English)
+                                </Typography>
+                            </Grid>
+                            {/* -------------------------------------------------------------------In Eng------------------------------------------------------------------ */}
+
+                            {/* -------------------------------------------------------------------1st row------------------------------------------------------------------ */}
+                            <Grid item xs={12} sm={6} md={6} xl={6}>
+                                <TextField
+                                    required
+                                    id="FirstName"
+                                    label="First Name"
+                                    size="small"
+                                    multiline
+                                    maxRows={2}
+                                    onChange={(event) => { setFirstName(event.target.value); }}
+                                    value={firstname}
+                                    fullWidth
+                                />
+                            </Grid>
+
+                            <Grid item xs={12} sm={6} md={6} xl={6}>
+                                <TextField
+                                    required
+                                    id="LastName"
+                                    label="Last Name"
+                                    size="small"
+                                    multiline
+                                    maxRows={2}
+                                    onChange={(event) => { setLastName(event.target.value); }}
+                                    value={lastname}
+                                    fullWidth
+                                />
+                            </Grid>
+
+
+                            {/* -------------------------------------------------------------------1st row------------------------------------------------------------------ */}
+
+                            {/* -------------------------------------------------------------------2nd row------------------------------------------------------------------ */}
+                            <Grid item xs={12} sm={6} md={6} xl={6}>
+                                <TextField
+                                    required
+                                    id="Department"
+                                    label="Department"
+                                    size="small"
+                                    multiline
+                                    maxRows={2}
+                                    onChange={(event) => { setDepartment(event.target.value); }}
+                                    value={department}
+                                    fullWidth
+                                />
+                            </Grid>
+
+
+
+                            <Grid item xs={12} sm={6} md={6} xl={6}>
+                                <TextField
+                                    required
+                                    id="JobTitle"
+                                    label="Job Title"
+                                    size="small"
+                                    multiline
+                                    maxRows={2}
+                                    onChange={(event) => { setJobTitle(event.target.value); }}
+                                    value={jobtitle}
+                                    fullWidth
+                                />
+                            </Grid>
+                            {/* -------------------------------------------------------------------2nd row------------------------------------------------------------------ */}
+
+
+                            {/* -------------------------------------------------------------------3rd row------------------------------------------------------------------ */}
+                            <Grid item xs={12} sm={4} md={4} xl={4}>
+                                <TextField
+                                    required
+                                    id="Email"
+                                    label="Email"
+                                    size="small"
+                                    multiline
+                                    maxRows={2}
+                                    onChange={(event) => { setEmail(event.target.value); }}
+                                    value={email}
+                                    fullWidth
+                                />
+                            </Grid>
+
+                            <Grid item xs={12} sm={4} md={4} xl={4}>
+                                <TextField
+                                    required
+                                    id="OfficePhoneNumber"
+                                    label="Office Phone Number"
+                                    size="small"
+                                    multiline
+                                    maxRows={2}
+                                    onChange={(event) => { setOfficePhoneNumber(event.target.value); }}
+                                    value={officephonenumber}
+                                    fullWidth
+                                />
+                            </Grid>
+
+                            <Grid item xs={12} sm={4} md={4} xl={4}>
+                                <TextField
+                                    required
+                                    id="MobilePhoneNumber"
+                                    label="Mobile Phone Number"
+                                    size="small"
+                                    multiline
+                                    maxRows={2}
+                                    onChange={(event) => { setMobilePhoneNumber(event.target.value); }}
+                                    value={mobilephonenumber}
+                                    fullWidth
+                                />
+                            </Grid>
+                            {/* -------------------------------------------------------------------3rd row------------------------------------------------------------------ */}
+
+                            {/* -------------------------------------------------------------------4th row------------------------------------------------------------------ */}
+                            <Grid item xs={12} sm={4} md={4} xl={4}>
+                                <TextField
+                                    required
+                                    id="Organization"
+                                    label="Organization"
+                                    size="small"
+                                    defaultValue="The Hong Kong Polytechnic University"
+                                    multiline
+                                    maxRows={2}
+                                    onChange={(event) => { setOrganization(event.target.value); }}
+                                    value={organization}
+                                    fullWidth
+                                />
+                            </Grid>
+
+                            <Grid item xs={12} sm={4} md={4} xl={4}>
+                                <TextField
+                                    required
+                                    id="URLaddress"
+                                    label="URL Address"
+                                    size="small"
+                                    defaultValue="www.polyu.edu.hk"
+                                    multiline
+                                    maxRows={2}
+                                    onChange={(event) => { setURLaddress(event.target.value); }}
+                                    value={urladdress}
+                                    fullWidth
+                                />
+                            </Grid>
+
+                            <Grid item xs={12} sm={4} md={4} xl={4}>
+                                <TextField
+                                    required
+                                    id="Address"
+                                    label="Address"
+                                    size="small"
+                                    multiline
+                                    maxRows={2}
+                                    onChange={(event) => { setAddress(event.target.value); }}
+                                    value={address}
+                                    fullWidth
+                                />
+                            </Grid>
+
+                            {/* -------------------------------------------------------------------4th row------------------------------------------------------------------ */}
+
+
+                            {/* -------------------------------------------------------------------5th row------------------------------------------------------------------ */}
+                            <Grid item xs={4} >
+                                <Button variant="outlined" href="#contained-buttons">
+                                    <Link to="/" activeclassname="active" style={{ textDecoration: "none", color: "#A02337" }}>
+                                        Back
+                                    </Link>
+                                </Button>
+                            </Grid>
+
+
+                            <Grid item xs={8} spacing={2} >
+                                <Stack spacing={2} direction="row" justifyContent="flex-end">
+                                    <Button variant="outlined" href="#contained-buttons" onClick={addnamecard}>
+                                        Save
+                                    </Button>
+
+                                    <Button variant="outlined" onClick={createVcardQrCodeHandler}>
+                                        {/* <Button variant="contained" href="#contained-buttons" onClick={addEmployee}> */}
+                                        Generate vCard QrCode
+                                    </Button>
+                                </Stack>
+                            </Grid>
+                            {/* -------------------------------------------------------------------5th row------------------------------------------------------------------ */}
+
+
+                        </Grid>
+                    </Paper>
+                </Grid>
+
+                <Grid item xs={4}>
+                    <Paper
+                        elevation={0}
+                        variant="outlined"
+                        sx={{
+                            m: 2,
+                            p: 4,
+                            border: "1px solid grey",
+                            height: 376.469
+                        }}
+                    >
+                        <Typography variant='h4' align="center" >
+                            vCard QR Code In English
+                            {/* {getVcardDataInEnglish.map((val, key) => {
 
                                 return (
                                     <div>
@@ -482,41 +463,41 @@ function Create() {
                                 )
 
                             })} */}
-                            </Typography>
+                        </Typography>
 
-                            <Typography align="center" justify="center" sx={{ p: 5 }}>
-                                {getObject()}
-                            </Typography>
+                        <Typography align="center" justify="center" sx={{ p: 5 }}>
+                            {getObject()}
+                        </Typography>
 
-                            <Typography align="center">
-                                {/* <Button variant="contained" onClick={() => { console.log(savesvg, "Hisvg"); window.location.href = savesvg }}> */}
-                                <Button variant="outlined" onClick={onDownload}>
-                                    Download vCode QrCode
-                                </Button>
-                            </Typography>
-                        </Paper>
-                    </Grid>
-
+                        <Typography align="center">
+                            {/* <Button variant="contained" onClick={() => { console.log(savesvg, "Hisvg"); window.location.href = savesvg }}> */}
+                            <Button variant="outlined" onClick={save}>
+                                Download vCode QrCode
+                            </Button>
+                        </Typography>
+                    </Paper>
                 </Grid>
 
-
-
-
-                {/* ------------------------------------------------------------------------CreateChinese--------------------------------------------------------------- */}
-                <CreateChinese />
-                {/* ------------------------------------------------------------------------CreateChinese--------------------------------------------------------------- */}
-
-                {/* ---------------------------------------------------------------------------ORCID-------------------------------------------------------------------- */}
-                <Orcid />
-                {/* ---------------------------------------------------------------------------ORCID-------------------------------------------------------------------- */}
-
-
-            </Container>
-        )
-    }
+            </Grid>
 
 
 
 
+            {/* ------------------------------------------------------------------------CreateChinese--------------------------------------------------------------- */}
+            <CreateChinese />
+            {/* ------------------------------------------------------------------------CreateChinese--------------------------------------------------------------- */}
 
-    export default connect()(Create)
+            {/* ---------------------------------------------------------------------------ORCID-------------------------------------------------------------------- */}
+            <Orcid />
+            {/* ---------------------------------------------------------------------------ORCID-------------------------------------------------------------------- */}
+
+
+        </Container>
+    )
+}
+
+
+
+
+
+export default connect()(Create)

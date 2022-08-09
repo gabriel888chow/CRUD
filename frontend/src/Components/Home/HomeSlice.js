@@ -17,7 +17,6 @@ export const HomeSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-
             .addCase(getDataFromApi.fulfilled, (state, action) => {
                 state.inputData = action?.payload?.data?.filter((rec) => rec.language === "English")
             })

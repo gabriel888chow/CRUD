@@ -21,6 +21,7 @@ export const loginSlice = createSlice(
         extraReducers: (builder) => {
             builder
             .addCase(fetchLoginURLAsync.fulfilled, (state, action) => {
+                console.log("action.payload", action.payload)
                 state.loginURL = action.payload.data.url
             })
             .addCase(fetchLoginURLAsync.rejected, (state, action) => {

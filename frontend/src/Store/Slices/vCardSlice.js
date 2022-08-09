@@ -22,7 +22,7 @@ const vCardSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(createVcardQrCode, (state, action) => {
-            console.log(action.payload, "createVcardQrCode")
+            // console.log(action.payload, "createVcardQrCode")
             state.vCardQrcodes.push(action.payload);
         })
         .addCase(createVcardQrCodeInChinese, (state, action) => {

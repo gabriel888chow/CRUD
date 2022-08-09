@@ -32,7 +32,7 @@ function OrcidTable() {
 
     // const [orcidURL, setOricdURL] = useState("");
     // const orcidList = useSelector(inputOrcidData);
-
+   
     useEffect(() => {
         dispatch(getDataFromApiOrcid())
     }, [])
@@ -52,7 +52,7 @@ function OrcidTable() {
         const [orcidURL, setOricdURL] = useState("");
 
         const [neworcidURL, setNewOrcidURL] = useState("");
-        
+
         const editOrcidFunction = () => {
 
             dispatch(editOrcidData({

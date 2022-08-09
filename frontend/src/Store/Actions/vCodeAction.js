@@ -7,9 +7,9 @@
 //     }
 // }
 
-import { createAction } from "@reduxjs/toolkit";
+// import { createAction } from "@reduxjs/toolkit";
 
-export const createVcardQrCode = createAction('addVcardQrCode');
-export const createVcardQrCodeInChinese = createAction('addVcardQrCode');
+// export const createVcardQrCode = createAction('addVcardQrCode');
+// export const createVcardQrCodeInChinese = createAction('addVcardQrCode');
 
 // createVcardQrCode("");

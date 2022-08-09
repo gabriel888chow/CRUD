@@ -80,8 +80,6 @@ function Vcard(props) {
                 <br /> */}
             {/* <Divider variant="middle" /> */}
             <QRCodeSVG value={myVCard} size={200} />
-           
-
             {/* <QRCodeCanvas value={myVCard.toString()} size={60.472441} /> */}
             {/* <Divider variant="middle" /> */}
         </Typography>

@@ -1,7 +1,20 @@
-const express = require('express');
+
+// const loginurlRouter = require('./src/routes/controllers/api/loginurl')
+
+// const express = require('express');
+// const cors = require("cors");
+// const mysql = require('mysql2');
+
+import express from 'express';
+import cors from 'cors';
+import mysql from 'mysql2';
+// import loginurlRouter from './src/routes/controllers/api/loginurl';
+// import { getAuthCodeUrl } from './src/utilities/polyusso.js';
+// import { createApiResponse } from './src/models/model.js';
+
 const app = express();
-const cors = require("cors");
-const mysql = require('mysql2');
+// const router = express.Router();
+
 
 app.use(cors());
 app.use(express.json());
@@ -151,6 +164,19 @@ app.delete('/delete/orcid/:id', (req, res) => {
     res.status(200).send({ isSuccess: true })
 })
 // -------------------------------------------------------orcid_data table------------------------------------------------
+
+// app.use('/api/loginurl', loginurlRouter);
+
+// router.post('/api/loginurl', async (req, res, next) => {
+//     try {
+//         const originUrl = !!req.body?.originUrl ? String(req.body?.originUrl) : "/";
+
+//         return res.status(200).send(createApiResponse(null, { url: await getAuthCodeUrl(originUrl) }));
+//     } catch (err) {
+//         console.log(`Unknown error cought from /polyusso/loginurl: ${err}`);
+//         return next(err);
+//     }
+// });
 
 app.listen(8080, () => {
     console.log("server is running on port 8080");
