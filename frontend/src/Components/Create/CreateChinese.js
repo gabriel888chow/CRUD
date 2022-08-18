@@ -26,8 +26,8 @@ function CreateChinese() {
     const [email, setEmail] = useState("");
     const [officephonenumber, setOfficePhoneNumber] = useState("");
     const [mobilephonenumber, setMobilePhoneNumber] = useState("");
-    const [organization, setOrganization] = useState("香港理工大學");
-    const [urladdress, setURLaddress] = useState("www.polyu.edu.hk");
+    const [organization, setOrganization] = useState("香港資訊科技");
+    const [urladdress, setURLaddress] = useState("www.hkit.com.hk");
     const [address, setAddress] = useState("");
 
     const selectvCardQrcodeListInChinese = useSelector(vCardQrcodeListInChinese);
@@ -288,7 +288,7 @@ function CreateChinese() {
                                 id="Organization"
                                 label="組織"
                                 size="small"
-                                defaultValue="香港理工大學"
+                                defaultValue="香港資訊科技"
                                 multiline
                                 maxRows={2}
                                 onChange={(event) => { setOrganization(event.target.value); }}
@@ -303,7 +303,7 @@ function CreateChinese() {
                                 id="URLaddress"
                                 label="網址地址"
                                 size="small"
-                                defaultValue="www.polyu.edu.hk"
+                                defaultValue="www.hkit.com.hk"
                                 multiline
                                 maxRows={2}
                                 onChange={(event) => { setURLaddress(event.target.value); }}
@@ -344,7 +344,7 @@ function CreateChinese() {
 
                         <Grid item xs={4} >
                             <Button variant="outlined" href="#contained-buttons">
-                                <Link to="/" activeclassname="active" style={{ textDecoration: "none", color: "#A02337" }}>
+                                <Link to="/" activeclassname="active" style={{ textDecoration: "none", color: "#5A8F7B", fontWeight: "bold" }}>
                                     Back
                                 </Link>
                             </Button>

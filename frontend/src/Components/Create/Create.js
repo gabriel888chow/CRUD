@@ -33,8 +33,8 @@ function Create() {
     const [email, setEmail] = useState("");
     const [officephonenumber, setOfficePhoneNumber] = useState("");
     const [mobilephonenumber, setMobilePhoneNumber] = useState("");
-    const [organization, setOrganization] = useState("The Hong Kong Polytechnic University");
-    const [urladdress, setURLaddress] = useState("www.polyu.edu.hk");
+    const [organization, setOrganization] = useState("Hong Kong Information Technology");
+    const [urladdress, setURLaddress] = useState("www.hkit.com.hk");
     const [address, setAddress] = useState("");
 
     // const selectvCardQrcodeList = useSelector(vCardQrcodeList);
@@ -96,7 +96,7 @@ function Create() {
     );
 
     // console.log("vCardQrcodesTable", vCardQrcodesTable)
-    console.log("selectvCardQrcodeList", ...selectvCardQrcodeList)
+    // console.log("selectvCardQrcodeList", ...selectvCardQrcodeList)
 
     // console.log(vCardQrcodesTable.slice(), "slice22222222");
     // console.log(vCardQrcodesTable.slice(vCardQrcodesTable.length - 1), "slice33333333");
@@ -111,13 +111,13 @@ function Create() {
             return vCardObject;
         }
     }
-    console.log(getObject(), "getObject")
+    // console.log(getObject(), "getObject")
 
     const vCardSvg = vCardQrcodesTable.slice(vCardQrcodesTable.length - 1)
     const canvas = createCanvas(700, 700, "svg")
     QRCode.toCanvas(canvas, vCardSvg, { width: 500, errorCorrectionLevel: 'H', type: "svg" })
-    console.log(vCardSvg, "vCardSvg.toString()")
-    console.log(canvas.toDataURL(), "URL")
+    // console.log(vCardSvg, "vCardSvg.toString()")
+    // console.log(canvas.toDataURL(), "URL")
 
     function save(filename, data) {
         const blob = new Blob([data], {type: 'image/svg+xml' });
@@ -188,7 +188,11 @@ function Create() {
             alert("Your mobile phone number input is more then 8 number! Please try angin!");
         } else if (mobilephonenumber.length <= 7) {
             alert("Your mobile phone number input is less then 8 number! Please try angin!");
-        } else {
+        } 
+        // else if (email.includes("@") !== "@" ) {
+        //     alert("Your email format is wrong! Please try angin!");
+        // }
+         else {
             e.preventDefault();
             dispatch(addVcardData({
                 firstname: firstname,
@@ -357,7 +361,7 @@ function Create() {
                                     id="Organization"
                                     label="Organization"
                                     size="small"
-                                    defaultValue="The Hong Kong Polytechnic University"
+                                    defaultValue="Hong Kong Information Technology"
                                     multiline
                                     maxRows={2}
                                     onChange={(event) => { setOrganization(event.target.value); }}
@@ -372,7 +376,7 @@ function Create() {
                                     id="URLaddress"
                                     label="URL Address"
                                     size="small"
-                                    defaultValue="www.polyu.edu.hk"
+                                    defaultValue="www.hkit.com.hk"
                                     multiline
                                     maxRows={2}
                                     onChange={(event) => { setURLaddress(event.target.value); }}
@@ -401,7 +405,7 @@ function Create() {
                             {/* -------------------------------------------------------------------5th row------------------------------------------------------------------ */}
                             <Grid item xs={4} >
                                 <Button variant="outlined" href="#contained-buttons">
-                                    <Link to="/" activeclassname="active" style={{ textDecoration: "none", color: "#A02337" }}>
+                                    <Link to="/" activeclassname="active" style={{ textDecoration: "none", color: "#5A8F7B", fontWeight: "bold"  }}>
                                         Back
                                     </Link>
                                 </Button>

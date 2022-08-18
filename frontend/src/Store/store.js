@@ -4,6 +4,7 @@ import HomePageReducer from '../Components/Home/HomeSlice';
 import OrcidReducer from '../Components/ORCID/OrcidSlice';
 import loginReducer from '../login/loginSlice';
 import OrcidSvgReducer from "../Components/ORCID/OrcidSvgSlice";
+import CreateVcardSvgReducer from "../Components/Create/CreateSvgSlice";
 
 const store = configureStore({
     reducer: { 
@@ -12,6 +13,7 @@ const store = configureStore({
         orcidRecord: OrcidReducer,
         login: loginReducer,
         orcidSvgQrcode: OrcidSvgReducer,
+        createVcardSvg: CreateVcardSvgReducer,
     }
 });
 

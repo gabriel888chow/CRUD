@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
     addorcid,
-} from '../../api/OrcidData';
+} from '../../api/OrcidSvgData';
 
 const initialState = {
     orcidSvg: "",
@@ -14,8 +14,8 @@ export const OrcidSvgSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(addOrcidDataSvg.fulfilled, (state, action) => {
-                // console.log(action?.payload?.data, "addOrcidData")
-                state.orcidSvg = action?.payload?.data
+                console.log(action?.payload, "addOrcidData")
+                state.orcidSvg = action?.payload?.data?.orcidURL
             })
     }
 })

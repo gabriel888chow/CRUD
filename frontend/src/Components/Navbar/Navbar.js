@@ -24,7 +24,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import img from "./polyu_logo.png";
+// import img from "./polyu_logo.png";
 // import Grid from '@mui/material/Grid';
 
 const drawerWidth = 250;
@@ -105,7 +105,7 @@ function Navbar() {
             <MenuIcon />
           </IconButton>
 
-          <Box
+          {/* <Box
             align="center"
             component="img"
             sx={{
@@ -115,7 +115,7 @@ function Navbar() {
             }}
             alt="logo"
             src={img}
-          />
+          /> */}
         </Toolbar>
       </AppBar>
 
@@ -138,13 +138,13 @@ function Navbar() {
         </DrawerHeader>
 
         <Button variant="text">
-          <Link to="/" activeclassname="active" onClick={handleDrawerClose} style={{ textDecoration: "none", color: "#A02337" }}>
+          <Link to="/" activeclassname="active" onClick={handleDrawerClose} style={{ textDecoration: "none", color: "#5A8F7B" }}>
             Home Page
           </Link>
         </Button>
 
         <Button variant="text">
-          <Link to="/create" activeclassname="active" onClick={handleDrawerClose} style={{ textDecoration: "none", color: "#A02337" }}>
+          <Link to="/create" activeclassname="active" onClick={handleDrawerClose} style={{ textDecoration: "none", color: "#5A8F7B" }}>
             vCard Generator
           </Link>
         </Button>

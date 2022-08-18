@@ -13,7 +13,7 @@ import mysql from 'mysql2';
 // import { createApiResponse } from './src/models/model.js';
 
 const app = express();
-// const router = express.Router();
+const router = express.Router();
 
 
 app.use(cors());
@@ -120,7 +120,7 @@ app.post('/create/orcid', (req, res) => {
             if (err) {
                 console.log(err)
             } else {
-                res.send("Values Inserted")
+                res.status(200).send({ orcidURL })
             }
         }
     );
