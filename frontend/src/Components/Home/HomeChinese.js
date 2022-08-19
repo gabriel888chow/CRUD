@@ -70,8 +70,8 @@ function HomeChinese() {
         const [newemail, setNewEmail] = useState("");
         const [newofficephonenumber, setNewOfficePhoneNumber] = useState("");
         const [newmobilephonenumber, setNewMobilePhoneNumber] = useState("");
-        const [neworganization, setNewOrganization] = useState("The Hong Kong Polytechnic University");
-        const [newurladdress, setNewURLaddress] = useState("www.polyu.edu.hk");
+        const [neworganization, setNewOrganization] = useState("香港資訊科技");
+        const [newurladdress, setNewURLaddress] = useState("www.hkit.com.hk");
         const [newaddress, setNewAddress] = useState("");
 
 

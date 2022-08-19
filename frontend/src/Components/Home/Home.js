@@ -121,8 +121,8 @@ function Home() {
         const [newemail, setNewEmail] = useState("");
         const [newofficephonenumber, setNewOfficePhoneNumber] = useState("");
         const [newmobilephonenumber, setNewMobilePhoneNumber] = useState("");
-        const [neworganization, setNewOrganization] = useState("The Hong Kong Polytechnic University");
-        const [newurladdress, setNewURLaddress] = useState("www.polyu.edu.hk");
+        const [neworganization, setNewOrganization] = useState("Hong Kong Information Technology");
+        const [newurladdress, setNewURLaddress] = useState("www.hkit.com.hk");
         const [newaddress, setNewAddress] = useState("");
 
         // useEffect (() => {
@@ -411,7 +411,7 @@ function Home() {
                                     id="Organization"
                                     label="Organization"
                                     size="small"
-                                    defaultValue="The Hong Kong Polytechnic University"
+                                    defaultValue="Hong Kong Information Technology"
                                     multiline
                                     maxRows={2}
                                     onChange={(event) => { setNewOrganization(event.target.value); }}
@@ -427,7 +427,7 @@ function Home() {
                                     id="URLaddress"
                                     label="URL Address"
                                     size="small"
-                                    defaultValue="www.polyu.edu.hk"
+                                    defaultValue="www.hkit.com.hk"
                                     multiline
                                     maxRows={2}
                                     onChange={(event) => { setNewURLaddress(event.target.value); }}
@@ -644,6 +644,7 @@ function Home() {
     return (
         <Container maxWidth="xl" >
             {/* --------------------------------------------eng------------------------------------------------ */}
+            <Grid container >
             <Grid item xs={12}>
                 {/* <Button onClick={() => { getVcardDataInEnglish() }}>
                     show
@@ -708,7 +709,7 @@ function Home() {
             <br />
             <OrcidTable />
 
-
+            </Grid>
         </Container>
     );
 

@@ -282,7 +282,7 @@ function Orcid() {
                     </Typography>
 
                     <Typography align="center">
-                        <Button variant="outlined" onClick={() => {save("abc" , )}}>
+                        <Button variant="outlined" onClick={() => {save("abc")}}>
                             {/* <Button variant="outlined" onClick={() => { qrcode() }}> */}
                             Download ORCID qrcode
                         </Button>

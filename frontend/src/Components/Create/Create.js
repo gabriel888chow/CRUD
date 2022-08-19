@@ -214,15 +214,15 @@ function Create() {
 
     return (
         <Container maxWidth="lx" >
-            <Grid container spacing={2}>
+            <Grid container spacing={1}>
                 <Grid item xs={8}>
 
                     <Paper
                         elevation={0}
                         variant="outlined"
                         sx={{
-                            m: 2,
-                            p: 4,
+                            m: 1,
+                            p: 2,
                             border: "1px solid grey",
                         }}
                     >
@@ -436,8 +436,8 @@ function Create() {
                         elevation={0}
                         variant="outlined"
                         sx={{
-                            m: 2,
-                            p: 4,
+                            m: 1,
+                            p: 2,
                             border: "1px solid grey",
                             height: 376.469
                         }}

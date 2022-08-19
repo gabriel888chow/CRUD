@@ -11,9 +11,13 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { vCardQrcodeListInChinese } from '../../Store/Slices/vCardSlice';
-import { createVcardQrCodeInChinese } from '../../Store/Slices/vCardSlice';
+// import { createVcardQrCodeInChinese } from '../../Store/Slices/vCardSlice';
 import Vcard from '../Vcard/Vcard'; // https://github.com/joaocarmo/vcard-creator
 import { addVcardDataInChinese } from '../Home/HomeSlice';
+import { 
+    addVcardSvgChinese,
+    vCardSvgChinese
+ } from './CreateSvgSlice';
 
 function CreateChinese() {
     const dispatch = useDispatch();
@@ -30,7 +34,8 @@ function CreateChinese() {
     const [urladdress, setURLaddress] = useState("www.hkit.com.hk");
     const [address, setAddress] = useState("");
 
-    const selectvCardQrcodeListInChinese = useSelector(vCardQrcodeListInChinese);
+    // const selectvCardQrcodeListInChinese = useSelector(vCardQrcodeListInChinese);
+    const selectvCardQrcodeListInChinese = useSelector(vCardSvgChinese);
     // console.log(selectvCardQrcodeListInChinese, "HIIIIIII111111")
 
     // const dispatchInChinese = useDispatch();
@@ -41,7 +46,7 @@ function CreateChinese() {
         } else {
             e.preventDefault();
             dispatch(
-                createVcardQrCodeInChinese({
+                addVcardSvgChinese({
                     firstname,
                     lastname,
                     department,
@@ -58,10 +63,33 @@ function CreateChinese() {
             // console.log(createVcardQrCodeInChinese, "8888888")
         }
     };
+    // const createVcardQrCodeHandlerInChinese = (e) => {
+    //     if (firstname === "" || lastname === "" || department === "" || jobtitle === "" || email === "" || officephonenumber === "" || mobilephonenumber === "" || organization === "" || urladdress === "" || address === "") {
+    //         alert("Not yet have input!");
+    //     } else {
+    //         e.preventDefault();
+    //         dispatch(
+    //             createVcardQrCodeInChinese({
+    //                 firstname,
+    //                 lastname,
+    //                 department,
+    //                 jobtitle,
+    //                 email,
+    //                 officephonenumber,
+    //                 mobilephonenumber,
+    //                 organization,
+    //                 urladdress,
+    //                 address,
+    //                 // id: Math.random(),
+    //             })
+    //         );
+    //         // console.log(createVcardQrCodeInChinese, "8888888")
+    //     }
+    // };
 
     // const vCardQrcodeListInChinese = useSelector((state) => state.vCardQrcodes.vCardQrcodes);
 
-    const vCardQrcodesTableInChinese = selectvCardQrcodeListInChinese.map((vCardQrcode) => (
+    const vCardQrcodesTableInChinese = selectvCardQrcodeListInChinese((vCardQrcode) => (
         // <tr> 
         //     <td>{vCardQrcode.firstname}</td>
         //     <td>{vCardQrcode.lastname}</td>
@@ -142,14 +170,14 @@ function CreateChinese() {
     };
 
     return (
-        <Grid container spacing={2}>
+        <Grid container spacing={1}>
             <Grid item xs={8}>
                 <Paper
                     elevation={0}
                     variant="outlined"
                     sx={{
-                        m: 2,
-                        p: 4,
+                        m: 1,
+                        p: 2,
                         border: "1px solid grey",
                     }}
                 >
@@ -373,8 +401,8 @@ function CreateChinese() {
                     elevation={0}
                     variant="outlined"
                     sx={{
-                        m: 2,
-                        p: 4,
+                        m: 1,
+                        p: 2,
                         border: "1px solid grey",
                         height: 376.469
                     }}
