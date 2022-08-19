@@ -14,10 +14,10 @@ import { vCardQrcodeListInChinese } from '../../Store/Slices/vCardSlice';
 // import { createVcardQrCodeInChinese } from '../../Store/Slices/vCardSlice';
 import Vcard from '../Vcard/Vcard'; // https://github.com/joaocarmo/vcard-creator
 import { addVcardDataInChinese } from '../Home/HomeSlice';
-import { 
+import {
     addVcardSvgChinese,
     vCardSvgChinese
- } from './CreateSvgSlice';
+} from './CreateSvgSlice';
 
 function CreateChinese() {
     const dispatch = useDispatch();
@@ -89,35 +89,35 @@ function CreateChinese() {
 
     // const vCardQrcodeListInChinese = useSelector((state) => state.vCardQrcodes.vCardQrcodes);
 
-    const vCardQrcodesTableInChinese = selectvCardQrcodeListInChinese((vCardQrcode) => (
-        // <tr> 
-        //     <td>{vCardQrcode.firstname}</td>
-        //     <td>{vCardQrcode.lastname}</td>
-        // </tr>
-        <div>
-            <Vcard
-                firstname={vCardQrcode.firstname}
-                lastname={vCardQrcode.lastname}
-                department={vCardQrcode.department}
-                jobtitle={vCardQrcode.jobtitle}
-                email={vCardQrcode.email}
-                officephonenumber={vCardQrcode.officephonenumber}
-                mobilephonenumber={vCardQrcode.mobilephonenumber}
-                organization={vCardQrcode.organization}
-                urladdress={vCardQrcode.urladdress}
-                address={vCardQrcode.address}
-            />
-        </div>
-    )
-    );
+    // const vCardQrcodesTableInChinese = selectvCardQrcodeListInChinese((vCardQrcode) => (
+    //     // <tr> 
+    //     //     <td>{vCardQrcode.firstname}</td>
+    //     //     <td>{vCardQrcode.lastname}</td>
+    //     // </tr>
+    //     <div>
+    //         <Vcard
+    //             firstname={vCardQrcode.firstname}
+    //             lastname={vCardQrcode.lastname}
+    //             department={vCardQrcode.department}
+    //             jobtitle={vCardQrcode.jobtitle}
+    //             email={vCardQrcode.email}
+    //             officephonenumber={vCardQrcode.officephonenumber}
+    //             mobilephonenumber={vCardQrcode.mobilephonenumber}
+    //             organization={vCardQrcode.organization}
+    //             urladdress={vCardQrcode.urladdress}
+    //             address={vCardQrcode.address}
+    //         />
+    //     </div>
+    // )
+    // );
 
-    function getObjectInChinese() {
-        const vCardObjectInChinese = vCardQrcodesTableInChinese.slice(vCardQrcodesTableInChinese.length - 1);
-        if (vCardQrcodesTableInChinese.length > 0) {
-            return vCardObjectInChinese;
-        }
-    }
-   
+    // function getObjectInChinese() {
+    //     const vCardObjectInChinese = vCardQrcodesTableInChinese.slice(vCardQrcodesTableInChinese.length - 1);
+    //     if (vCardQrcodesTableInChinese.length > 0) {
+    //         return vCardObjectInChinese;
+    //     }
+    // }
+
 
     // const addvcardChinese = () => {
     //     Axios.post('http://localhost:8080/create', {
@@ -413,7 +413,21 @@ function CreateChinese() {
                     </Typography>
 
                     <Typography align="center" justify="center" sx={{ p: 5 }}>
-                        {getObjectInChinese()}
+                        {
+                            selectvCardQrcodeListInChinese &&
+                            <Vcard
+                                firstname={firstname}
+                                lastname={lastname}
+                                department={department}
+                                jobtitle={jobtitle}
+                                email={email}
+                                officephonenumber={officephonenumber}
+                                mobilephonenumber={mobilephonenumber}
+                                organization={organization}
+                                urladdress={urladdress}
+                                address={address}
+                            />
+                        }
                     </Typography>
 
                     <Typography align="center">

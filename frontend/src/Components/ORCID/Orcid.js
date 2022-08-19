@@ -95,25 +95,25 @@ function Orcid() {
 
 
 
-    const canvas = createCanvas(700, 700, "svg")
-    QRCode.toCanvas(canvas, orcidSvgData, { width: 500, errorCorrectionLevel: 'H', type: "svg" })
-    const svvg = QRCode.toString(orcidSvgData, { type: "utf8" })
-    console.log(svvg, "svg")
+    // const canvas = createCanvas(700, 700, "svg")
+    // QRCode.toCanvas(canvas, orcidSvgData, { width: 500, errorCorrectionLevel: 'H', type: "svg" })
+    // const svvg = QRCode.toString(orcidSvgData, { type: "utf8" })
+    // console.log(svvg, "svg")
 
-    function save(filename, data) {
-        const blob = new Blob([data], { type: "png" });
-        if (window.navigator.msSaveOrOpenBlob) {
-            window.navigator.msSaveBlob(blob, filename);
-        } else {
-            const elem = window.document.createElement('a');
-            elem.href = canvas.toDataURL();
-            elem.download = filename;
-            document.body.appendChild(elem);
-            elem.click();
-            document.body.removeChild(elem);
-            // console.log(canvas.toDataURL())
-        }
-    }
+    // function save(filename, data) {
+    //     const blob = new Blob([data], { type: "png" });
+    //     if (window.navigator.msSaveOrOpenBlob) {
+    //         window.navigator.msSaveBlob(blob, filename);
+    //     } else {
+    //         const elem = window.document.createElement('a');
+    //         elem.href = canvas.toDataURL();
+    //         elem.download = filename;
+    //         document.body.appendChild(elem);
+    //         elem.click();
+    //         document.body.removeChild(elem);
+    //         // console.log(canvas.toDataURL())
+    //     }
+    // }
 
     // const canvas = createCanvas(700, 700, "svg")
     // QRCode.toCanvas(canvas, orcidSvgData, { width: 500, errorCorrectionLevel: 'H', type: "svg" })
@@ -282,8 +282,9 @@ function Orcid() {
                     </Typography>
 
                     <Typography align="center">
-                        <Button variant="outlined" onClick={() => {save("abc")}}>
-                            {/* <Button variant="outlined" onClick={() => { qrcode() }}> */}
+                        <Button variant="outlined" >
+                        {/* <Button variant="outlined" onClick={() => {save("abc", )}}> */}
+                            
                             Download ORCID qrcode
                         </Button>
                     </Typography>

@@ -5,7 +5,7 @@ import {
 
 const initialState = {
     vCardSvg: "",
-    vCardSvgChinese: "",
+    vCardSvgChinese: "", // initialState 要比個false value
 };
 
 export const CreateSvgSlice = createSlice ({
@@ -19,7 +19,18 @@ export const CreateSvgSlice = createSlice ({
             })
             .addCase(addVcardSvgChinese.fulfilled, (state, action) => {
                 console.log(action?.payload, "addVcardSvgChinese")
-                state.vCardSvgChinese = action?.payload?.data?.firstname
+                state.vCardSvgChinese = {
+                    firstname: action?.payload?.data?.firstname,
+                    lastname: action?.payload?.data?.lastname,
+                    department: action?.payload?.data?.lastname,
+                    jobtitle: action?.payload?.data?.lastname,
+                    email: action?.payload?.data?.lastname,
+                    officephonenumber: action?.payload?.data?.lastname,
+                    mobilephonenumber: action?.payload?.data?.lastname,
+                    organization: action?.payload?.data?.lastname,
+                    urladdress: action?.payload?.data?.lastname,
+                    address: action?.payload?.data?.lastname,
+                }
             })
     }
 })
