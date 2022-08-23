@@ -18,7 +18,7 @@ export const CreateSvgSlice = createSlice ({
                 state.vCardSvg = action?.payload?.data
             })
             .addCase(addVcardSvgChinese.fulfilled, (state, action) => {
-                console.log(action?.payload, "addVcardSvgChinese")
+                console.log(action.payload, "addVcardSvgChinese")
                 state.vCardSvgChinese = {
                     firstname: action?.payload?.data?.firstname,
                     lastname: action?.payload?.data?.lastname,
@@ -27,8 +27,8 @@ export const CreateSvgSlice = createSlice ({
                     email: action?.payload?.data?.lastname,
                     officephonenumber: action?.payload?.data?.lastname,
                     mobilephonenumber: action?.payload?.data?.lastname,
-                    organization: action?.payload?.data?.lastname,
-                    urladdress: action?.payload?.data?.lastname,
+                    // organization: action?.payload?.data?.lastname,
+                    // urladdress: action?.payload?.data?.lastname,
                     address: action?.payload?.data?.lastname,
                 }
             })

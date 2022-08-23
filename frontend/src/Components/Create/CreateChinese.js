@@ -36,7 +36,7 @@ function CreateChinese() {
 
     // const selectvCardQrcodeListInChinese = useSelector(vCardQrcodeListInChinese);
     const selectvCardQrcodeListInChinese = useSelector(vCardSvgChinese);
-    // console.log(selectvCardQrcodeListInChinese, "HIIIIIII111111")
+    console.log(selectvCardQrcodeListInChinese, "HIIIIIII111111")
 
     // const dispatchInChinese = useDispatch();
 
@@ -170,7 +170,7 @@ function CreateChinese() {
     };
 
     return (
-        <Grid container spacing={1}>
+        <Grid container spacing={2}>
             <Grid item xs={8}>
                 <Paper
                     elevation={0}
@@ -194,7 +194,7 @@ function CreateChinese() {
 
                         {/* -------------------------------------------------------------------In Chinese------------------------------------------------------------------ */}
                         <Grid item xs={12}>
-                            <Typography variant='h4' align="start" >
+                            <Typography variant='h4' align="left" >
                                 vCard (In Chinese)
                             </Typography>
                         </Grid>
@@ -379,13 +379,13 @@ function CreateChinese() {
                         </Grid>
 
 
-                        <Grid item xs={8} spacing={2} >
-                            <Stack spacing={2} direction="row" justifyContent="flex-end">
-                                <Button variant="outlined" href="#contained-buttons" onClick={addvcardChinese}>
+                        <Grid item xs={8} container spacing={2} >
+                            <Stack spacing={2} direction="row" justifyContent="flex-end" >
+                                <Button variant="outlined" href="#contained-buttons" size="small" onClick={addvcardChinese}>
                                     Save
                                 </Button>
 
-                                <Button variant="outlined" onClick={createVcardQrCodeHandlerInChinese}>
+                                <Button variant="outlined" size="small" onClick={createVcardQrCodeHandlerInChinese}>
                                     Generate vCard QrCode
                                 </Button>
                             </Stack>
@@ -416,16 +416,17 @@ function CreateChinese() {
                         {
                             selectvCardQrcodeListInChinese &&
                             <Vcard
-                                firstname={firstname}
-                                lastname={lastname}
-                                department={department}
-                                jobtitle={jobtitle}
-                                email={email}
-                                officephonenumber={officephonenumber}
-                                mobilephonenumber={mobilephonenumber}
-                                organization={organization}
-                                urladdress={urladdress}
-                                address={address}
+                                // firstname={firstname}
+                                // lastname={lastname}
+                                // department={department}
+                                // jobtitle={jobtitle}
+                                // email={email}
+                                // officephonenumber={officephonenumber}
+                                // mobilephonenumber={mobilephonenumber}
+                                // organization={organization}
+                                // urladdress={urladdress}
+                                // address={address}
+                                value={selectvCardQrcodeListInChinese}
                             />
                         }
                     </Typography>

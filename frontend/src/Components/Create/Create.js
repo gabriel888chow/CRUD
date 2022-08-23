@@ -213,8 +213,8 @@ function Create() {
     };
 
     return (
-        <Container maxWidth="lx" >
-            <Grid container spacing={1}>
+        <Container maxWidth="lx" spacing={2}>
+            <Grid container spacing={2}>
                 <Grid item xs={8}>
 
                     <Paper
@@ -239,7 +239,7 @@ function Create() {
 
                             {/* -------------------------------------------------------------------In Eng------------------------------------------------------------------ */}
                             <Grid item xs={12}>
-                                <Typography variant='h4' align="start" >
+                                <Typography variant='h4' align="left" >
                                     vCard (In English)
                                 </Typography>
                             </Grid>
@@ -412,7 +412,7 @@ function Create() {
                             </Grid>
 
 
-                            <Grid item xs={8} spacing={2} >
+                            <Grid container item xs={8} spacing={2} >
                                 <Stack spacing={2} direction="row" justifyContent="flex-end">
                                     <Button variant="outlined" href="#contained-buttons" onClick={addnamecard}>
                                         Save

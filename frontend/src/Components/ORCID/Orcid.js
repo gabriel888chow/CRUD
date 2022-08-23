@@ -29,6 +29,7 @@ function Orcid() {
 
     const [orcidURL, setOrcidURL] = useState("");
     const orcidSvgData = useSelector(orcidSvg);
+    // console.log(orcidSvgData, "oooo")
 
     const addorcid = (e) => {
         if (orcidURL === "") {
@@ -240,8 +241,8 @@ function Orcid() {
                             </Button>
                         </Grid>
 
-                        <Grid item xs={8} spacing={2} >
-                            <Stack spacing={2} direction="row" justifyContent="flex-end">
+                        <Grid item xs={8} container spacing={2} >
+                            <Stack spacing={1} direction="row" justifyContent="flex-end" >
                                 <Button variant="outlined" href="#contained-buttons" onClick={addorcid} >
                                     Save
                                 </Button>
