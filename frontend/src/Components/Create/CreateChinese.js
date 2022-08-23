@@ -36,7 +36,7 @@ function CreateChinese() {
 
     // const selectvCardQrcodeListInChinese = useSelector(vCardQrcodeListInChinese);
     const selectvCardQrcodeListInChinese = useSelector(vCardSvgChinese);
-    console.log(selectvCardQrcodeListInChinese, "HIIIIIII111111")
+    console.log(selectvCardQrcodeListInChinese, "useSelector")
 
     // const dispatchInChinese = useDispatch();
 
@@ -57,6 +57,7 @@ function CreateChinese() {
                     organization,
                     urladdress,
                     address,
+                    language:"Chinese",
                     // id: Math.random(),
                 })
             );
@@ -163,9 +164,10 @@ function CreateChinese() {
                 urladdress: urladdress,
                 address: address,
                 language: "Chinese"
-            })).then(
+            })).then(() => {
+                console.log("success addvcardChinese", firstname);
                 alert("Data Updated Successfully!!")
-            );
+        });
         };
     };
 
@@ -416,17 +418,17 @@ function CreateChinese() {
                         {
                             selectvCardQrcodeListInChinese &&
                             <Vcard
-                                // firstname={firstname}
-                                // lastname={lastname}
-                                // department={department}
-                                // jobtitle={jobtitle}
-                                // email={email}
-                                // officephonenumber={officephonenumber}
-                                // mobilephonenumber={mobilephonenumber}
-                                // organization={organization}
-                                // urladdress={urladdress}
-                                // address={address}
-                                value={selectvCardQrcodeListInChinese}
+                                firstname={firstname}
+                                lastname={lastname}
+                                department={department}
+                                jobtitle={jobtitle}
+                                email={email}
+                                officephonenumber={officephonenumber}
+                                mobilephonenumber={mobilephonenumber}
+                                organization={organization}
+                                urladdress={urladdress}
+                                address={address}
+                                // value={selectvCardQrcodeListInChinese}
                             />
                         }
                     </Typography>

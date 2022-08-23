@@ -97,6 +97,7 @@ export const editVcardDataInChinese = createAsyncThunk(
 export const addVcardData = createAsyncThunk(
     'add/addVcardData',
     async (payload) => {
+        console.log("addVcardData", payload)
         return await addVcard(payload);
     }
 )
