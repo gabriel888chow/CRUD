@@ -14,13 +14,19 @@ import CreateChinese from './CreateChinese';
 import Vcard from '../Vcard/Vcard'; // https://github.com/joaocarmo/vcard-creator
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { createVcardQrCode } from '../../Store/Slices/vCardSlice';
+// import { createVcardQrCode } from '../../Store/Slices/vCardSlice';
 // import Divider from '@mui/material/Divider';
 // import { saveAs } from 'file-saver';
-import { vCardQrcodeList } from '../../Store/Slices/vCardSlice';
+// import { vCardQrcodeList } from '../../Store/Slices/vCardSlice';
 import { createCanvas } from 'canvas';
 import QRCode from "qrcode";
 import { addVcardData } from '../Home/HomeSlice';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Box from '@mui/material/Box';
+import {
+    addVcardSvg,
+    vCardSvg
+} from './CreateSvgSlice';
 
 function Create() {
     const dispatch = useDispatch();
@@ -38,16 +44,17 @@ function Create() {
     const [address, setAddress] = useState("");
 
     // const selectvCardQrcodeList = useSelector(vCardQrcodeList);
-    const selectvCardQrcodeList = useSelector(vCardQrcodeList);
+    const selectvCardQrcodeList = useSelector(vCardSvg);
     // console.log(selectvCardQrcodeList)
 
+    // addVcardSvgChinese 這個係個action
     const createVcardQrCodeHandler = (e) => {
         if (firstname === "" || lastname === "" || department === "" || jobtitle === "" || email === "" || officephonenumber === "" || mobilephonenumber === "" || organization === "" || urladdress === "" || address === "") {
             alert("Not yet have input!");
         } else {
             e.preventDefault();
             dispatch(
-                createVcardQrCode({
+                addVcardSvg({
                     firstname,
                     lastname,
                     department,
@@ -58,12 +65,36 @@ function Create() {
                     organization,
                     urladdress,
                     address,
+                    language: "English",
                     // id: Math.random(),
                 })
             );
         }
         // console.log(createVcardQrCode)
     };
+    // const createVcardQrCodeHandler = (e) => {
+    //     if (firstname === "" || lastname === "" || department === "" || jobtitle === "" || email === "" || officephonenumber === "" || mobilephonenumber === "" || organization === "" || urladdress === "" || address === "") {
+    //         alert("Not yet have input!");
+    //     } else {
+    //         e.preventDefault();
+    //         dispatch(
+    //             createVcardQrCode({
+    //                 firstname,
+    //                 lastname,
+    //                 department,
+    //                 jobtitle,
+    //                 email,
+    //                 officephonenumber,
+    //                 mobilephonenumber,
+    //                 organization,
+    //                 urladdress,
+    //                 address,
+    //                 // id: Math.random(),
+    //             })
+    //         );
+    //     }
+    //     // console.log(createVcardQrCode)
+    // };
 
     // const vCardQrcodeList = useSelector((state) => state.vCardQrcodes.vCardQrcodes);
 
@@ -73,27 +104,28 @@ function Create() {
     // console.log(arr, "1212121")
 
     // const vCardQrcodesTable = vCardQrcodeList.map((vCardQrcode) => (
-    const vCardQrcodesTable = selectvCardQrcodeList.map((vCardQrcode) => (
-        // <tr> 
-        //     <td>{vCardQrcode.firstname}</td>
-        //     <td>{vCardQrcode.lastname}</td>
-        // </tr>
-        <div>
-            <Vcard
-                firstname={vCardQrcode.firstname}
-                lastname={vCardQrcode.lastname}
-                department={vCardQrcode.department}
-                jobtitle={vCardQrcode.jobtitle}
-                email={vCardQrcode.email}
-                officephonenumber={vCardQrcode.officephonenumber}
-                mobilephonenumber={vCardQrcode.mobilephonenumber}
-                organization={vCardQrcode.organization}
-                urladdress={vCardQrcode.urladdress}
-                address={vCardQrcode.address}
-            />
-        </div>
-    )
-    );
+
+    // const vCardQrcodesTable = selectvCardQrcodeList.map((vCardQrcode) => (
+    //     // <tr> 
+    //     //     <td>{vCardQrcode.firstname}</td>
+    //     //     <td>{vCardQrcode.lastname}</td>
+    //     // </tr>
+    //     <div>
+    //         <Vcard
+    //             firstname={vCardQrcode.firstname}
+    //             lastname={vCardQrcode.lastname}
+    //             department={vCardQrcode.department}
+    //             jobtitle={vCardQrcode.jobtitle}
+    //             email={vCardQrcode.email}
+    //             officephonenumber={vCardQrcode.officephonenumber}
+    //             mobilephonenumber={vCardQrcode.mobilephonenumber}
+    //             organization={vCardQrcode.organization}
+    //             urladdress={vCardQrcode.urladdress}
+    //             address={vCardQrcode.address}
+    //         />
+    //     </div>
+    // )
+    // );
 
     // console.log("vCardQrcodesTable", vCardQrcodesTable)
     // console.log("selectvCardQrcodeList", ...selectvCardQrcodeList)
@@ -105,41 +137,41 @@ function Create() {
     // console.log(aaabbb, "what is this");
 
 
-    function getObject() {
-        const vCardObject = vCardQrcodesTable.slice(vCardQrcodesTable.length - 1);
-        if (vCardQrcodesTable.length > 0) {
-            return vCardObject;
-        }
-    }
+    // function getObject() {
+    //     const vCardObject = vCardQrcodesTable.slice(vCardQrcodesTable.length - 1);
+    //     if (vCardQrcodesTable.length > 0) {
+    //         return vCardObject;
+    //     }
+    // }
     // console.log(getObject(), "getObject")
 
-    const vCardSvg = vCardQrcodesTable.slice(vCardQrcodesTable.length - 1)
-    const canvas = createCanvas(700, 700, "svg")
-    QRCode.toCanvas(canvas, vCardSvg, { width: 500, errorCorrectionLevel: 'H', type: "svg" })
-    // console.log(vCardSvg, "vCardSvg.toString()")
-    // console.log(canvas.toDataURL(), "URL")
+    // const vCardSvg = vCardQrcodesTable.slice(vCardQrcodesTable.length - 1)
+    // const canvas = createCanvas(700, 700, "svg")
+    // QRCode.toCanvas(canvas, vCardSvg, { width: 500, errorCorrectionLevel: 'H', type: "svg" })
+    // // console.log(vCardSvg, "vCardSvg.toString()")
+    // // console.log(canvas.toDataURL(), "URL")
 
-    function save(filename, data) {
-        const blob = new Blob([data], {type: 'image/svg+xml' });
-        if(window.navigator.msSaveOrOpenBlob) {
-            window.navigator.msSaveBlob(blob, filename);
-        }
-        else{
-            const elem = window.document.createElement('a');
-            elem.href = canvas.toDataURL();
-            elem.download = filename;        
-            document.body.appendChild(elem);
-            elem.click();        
-            document.body.removeChild(elem);
-        }
-    }
+    // function save(filename, data) {
+    //     const blob = new Blob([data], { type: 'image/svg+xml' });
+    //     if (window.navigator.msSaveOrOpenBlob) {
+    //         window.navigator.msSaveBlob(blob, filename);
+    //     }
+    //     else {
+    //         const elem = window.document.createElement('a');
+    //         elem.href = canvas.toDataURL();
+    //         elem.download = filename;
+    //         document.body.appendChild(elem);
+    //         elem.click();
+    //         document.body.removeChild(elem);
+    //     }
+    // }
 
 
     // const onDownload = () => {
     //     const vCardObject = vCardQrcodesTable.slice(vCardQrcodesTable.length - 1);
     //     console.log(vCardObject, "vCardObject22222222222222222222222222222222222222")
     //     const canvas = createCanvas(700, 700, "svg")
-        
+
     //     const can = QRCode.toCanvas(canvas, vCardObject.toString(), { width: 500, errorCorrectionLevel: 'H', type: "svg" }, function (error) {
     //         if (error) console.error(error)
     //         console.log('success!');
@@ -188,11 +220,11 @@ function Create() {
             alert("Your mobile phone number input is more then 8 number! Please try angin!");
         } else if (mobilephonenumber.length <= 7) {
             alert("Your mobile phone number input is less then 8 number! Please try angin!");
-        } 
+        }
         // else if (email.includes("@") !== "@" ) {
         //     alert("Your email format is wrong! Please try angin!");
         // }
-         else {
+        else {
             e.preventDefault();
             dispatch(addVcardData({
                 firstname: firstname,
@@ -405,24 +437,30 @@ function Create() {
                             {/* -------------------------------------------------------------------5th row------------------------------------------------------------------ */}
                             <Grid item xs={4} >
                                 <Button variant="outlined" href="#contained-buttons">
-                                    <Link to="/" activeclassname="active" style={{ textDecoration: "none", color: "#5A8F7B", fontWeight: "bold"  }}>
+                                    <Link to="/" activeclassname="active" style={{ textDecoration: "none", color: "#5A8F7B", fontWeight: "bold" }}>
                                         Back
                                     </Link>
                                 </Button>
                             </Grid>
 
 
-                            <Grid container item xs={8} spacing={2} >
-                                <Stack spacing={2} direction="row" justifyContent="flex-end">
-                                    <Button variant="outlined" href="#contained-buttons" onClick={addnamecard}>
-                                        Save
-                                    </Button>
+                            <Grid item xs={8} >
+                                <Box textAlign='end'>
+                                    <ButtonGroup
+                                        disableElevation
+                                        variant="outlined"
+                                        aria-label="Disabled elevation buttons"
+                                    >
+                                        <Button variant="outlined" onClick={addnamecard}>
+                                            Save
+                                        </Button>
 
-                                    <Button variant="outlined" onClick={createVcardQrCodeHandler}>
-                                        {/* <Button variant="contained" href="#contained-buttons" onClick={addEmployee}> */}
-                                        Generate vCard QrCode
-                                    </Button>
-                                </Stack>
+                                        <Button variant="outlined" onClick={createVcardQrCodeHandler}>
+                                            {/* <Button variant="contained" href="#contained-buttons" onClick={addEmployee}> */}
+                                            Generate vCard QrCode
+                                        </Button>
+                                    </ButtonGroup>
+                                </Box>
                             </Grid>
                             {/* -------------------------------------------------------------------5th row------------------------------------------------------------------ */}
 
@@ -470,14 +508,30 @@ function Create() {
                         </Typography>
 
                         <Typography align="center" justify="center" sx={{ p: 5 }}>
-                            {getObject()}
+                            {/* {getObject()} */}
+                            {
+                                selectvCardQrcodeList &&
+                                <Vcard
+                                    firstname={firstname}
+                                    lastname={lastname}
+                                    department={department}
+                                    jobtitle={jobtitle}
+                                    email={email}
+                                    officephonenumber={officephonenumber}
+                                    mobilephonenumber={mobilephonenumber}
+                                    organization={organization}
+                                    urladdress={urladdress}
+                                    address={address}
+                                />
+                            }
                         </Typography>
 
                         <Typography align="center">
                             {/* <Button variant="contained" onClick={() => { console.log(savesvg, "Hisvg"); window.location.href = savesvg }}> */}
-                            <Button variant="outlined" onClick={save}>
+                            {/* <Button variant="outlined" onClick={save}> */}
+                            {/* <Button variant="outlined" >
                                 Download vCode QrCode
-                            </Button>
+                            </Button> */}
                         </Typography>
                     </Paper>
                 </Grid>

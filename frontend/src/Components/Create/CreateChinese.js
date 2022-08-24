@@ -10,7 +10,7 @@ import Stack from '@mui/material/Stack';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { vCardQrcodeListInChinese } from '../../Store/Slices/vCardSlice';
+// import { vCardQrcodeListInChinese } from '../../Store/Slices/vCardSlice';
 // import { createVcardQrCodeInChinese } from '../../Store/Slices/vCardSlice';
 import Vcard from '../Vcard/Vcard'; // https://github.com/joaocarmo/vcard-creator
 import { addVcardDataInChinese } from '../Home/HomeSlice';
@@ -18,6 +18,10 @@ import {
     addVcardSvgChinese,
     vCardSvgChinese
 } from './CreateSvgSlice';
+import { createCanvas } from 'canvas';
+import QRCode from "qrcode";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Box from '@mui/material/Box';
 
 function CreateChinese() {
     const dispatch = useDispatch();
@@ -57,13 +61,14 @@ function CreateChinese() {
                     organization,
                     urladdress,
                     address,
-                    language:"Chinese",
+                    language: "Chinese",
                     // id: Math.random(),
                 })
             );
             // console.log(createVcardQrCodeInChinese, "8888888")
         }
     };
+    
     // const createVcardQrCodeHandlerInChinese = (e) => {
     //     if (firstname === "" || lastname === "" || department === "" || jobtitle === "" || email === "" || officephonenumber === "" || mobilephonenumber === "" || organization === "" || urladdress === "" || address === "") {
     //         alert("Not yet have input!");
@@ -167,9 +172,28 @@ function CreateChinese() {
             })).then(() => {
                 console.log("success addvcardChinese", firstname);
                 alert("Data Updated Successfully!!")
-        });
+            });
         };
     };
+
+    // const canvas = createCanvas(700, 700, "png")
+    // const can = QRCode.toCanvas(canvas, selectvCardQrcodeListInChinese)
+    // console.log(can, "can")
+
+    // function save(filename, data) {
+    //     const blob = new Blob([data], { type: "image/png" });
+    //     if (window.navigator.msSaveOrOpenBlob) {
+    //         window.navigator.msSaveBlob(blob, filename);
+    //     } else {
+    //         const elem = window.document.createElement('a');
+    //         elem.href = canvas.toDataURL();
+    //         elem.download = filename;
+    //         document.body.appendChild(elem);
+    //         elem.click();
+    //         document.body.removeChild(elem);
+    //         // console.log(canvas.toDataURL())
+    //     }
+    // }
 
     return (
         <Grid container spacing={2}>
@@ -373,7 +397,7 @@ function CreateChinese() {
                 </Grid> */}
 
                         <Grid item xs={4} >
-                            <Button variant="outlined" href="#contained-buttons">
+                            <Button variant="outlined" href="#contained-buttons" >
                                 <Link to="/" activeclassname="active" style={{ textDecoration: "none", color: "#5A8F7B", fontWeight: "bold" }}>
                                     Back
                                 </Link>
@@ -381,16 +405,22 @@ function CreateChinese() {
                         </Grid>
 
 
-                        <Grid item xs={8} container spacing={2} >
-                            <Stack spacing={2} direction="row" justifyContent="flex-end" >
-                                <Button variant="outlined" href="#contained-buttons" size="small" onClick={addvcardChinese}>
-                                    Save
-                                </Button>
+                        <Grid item xs={8} >
+                            <Box textAlign='end'>
+                                <ButtonGroup
+                                    disableElevation
+                                    variant="outlined"
+                                    aria-label="Disabled elevation buttons"
+                                >
+                                    <Button onClick={addvcardChinese}  >
+                                        Save
+                                    </Button>
 
-                                <Button variant="outlined" size="small" onClick={createVcardQrCodeHandlerInChinese}>
-                                    Generate vCard QrCode
-                                </Button>
-                            </Stack>
+                                    <Button onClick={createVcardQrCodeHandlerInChinese}>
+                                        Generate vCard QrCode
+                                    </Button>
+                                </ButtonGroup>
+                            </Box>
                         </Grid>
                         {/* -------------------------------------------------------------------5th row------------------------------------------------------------------ */}
 
@@ -428,15 +458,16 @@ function CreateChinese() {
                                 organization={organization}
                                 urladdress={urladdress}
                                 address={address}
-                                // value={selectvCardQrcodeListInChinese}
+                            // value={selectvCardQrcodeListInChinese}
                             />
                         }
                     </Typography>
 
                     <Typography align="center">
-                        <Button variant="outlined">
+                        {/* <Button variant="outlined" onClick={() => { save("qrcode.png",) }}> */}
+                        {/* <Button variant="outlined">
                             Download vCode QrCode
-                        </Button>
+                        </Button> */}
                     </Typography>
                 </Paper>
             </Grid>

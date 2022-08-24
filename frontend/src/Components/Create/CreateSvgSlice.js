@@ -15,21 +15,31 @@ export const CreateSvgSlice = createSlice ({
     extraReducers: (builder) => {
         builder
             .addCase(addVcardSvg.fulfilled, (state, action) => {
-                state.vCardSvg = action?.payload?.data
+                state.vCardSvg = {
+                    firstname: action?.payload?.data?.firstname,
+                    lastname: action?.payload?.data?.lastname,
+                    department: action?.payload?.data?.department,
+                    jobtitle: action?.payload?.data?.jobtitle,
+                    email: action?.payload?.data?.email,
+                    officephonenumber: action?.payload?.data?.officephonenumber,
+                    mobilephonenumber: action?.payload?.data?.mobilephonenumber,
+                    address: action?.payload?.data?.address,
+                    language: "English",
+                }
             })
             .addCase(addVcardSvgChinese.fulfilled, (state, action) => {
                 // console.log(action.payload, "addVcardSvgChinese")
                 state.vCardSvgChinese = {
                     firstname: action?.payload?.data?.firstname,
                     lastname: action?.payload?.data?.lastname,
-                    department: action?.payload?.data?.lastname,
-                    jobtitle: action?.payload?.data?.lastname,
-                    email: action?.payload?.data?.lastname,
-                    officephonenumber: action?.payload?.data?.lastname,
-                    mobilephonenumber: action?.payload?.data?.lastname,
+                    department: action?.payload?.data?.department,
+                    jobtitle: action?.payload?.data?.jobtitle,
+                    email: action?.payload?.data?.email,
+                    officephonenumber: action?.payload?.data?.officephonenumber,
+                    mobilephonenumber: action?.payload?.data?.mobilephonenumber,
                     // organization: action?.payload?.data?.lastname,
                     // urladdress: action?.payload?.data?.lastname,
-                    address: action?.payload?.data?.lastname,
+                    address: action?.payload?.data?.address,
                     language: "Chinese",
                 }
             })

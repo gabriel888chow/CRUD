@@ -21,6 +21,8 @@ import QRCode from "qrcode";
 // import QRCode from "qrcode-svg";
 import { ReactSVG } from 'react-svg';
 // import {svg} from './svg';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Box from '@mui/material/Box';
 
 
 function Orcid() {
@@ -96,25 +98,25 @@ function Orcid() {
 
 
 
-    // const canvas = createCanvas(700, 700, "svg")
-    // QRCode.toCanvas(canvas, orcidSvgData, { width: 500, errorCorrectionLevel: 'H', type: "svg" })
-    // const svvg = QRCode.toString(orcidSvgData, { type: "utf8" })
-    // console.log(svvg, "svg")
+    const canvas = createCanvas(700, 700, "svg")
+    QRCode.toCanvas(canvas, orcidSvgData, { width: 500, errorCorrectionLevel: 'H', type: "svg" })
+    const svvg = QRCode.toString(orcidSvgData, { type: "utf8" })
+    console.log(svvg, "svg")
 
-    // function save(filename, data) {
-    //     const blob = new Blob([data], { type: "png" });
-    //     if (window.navigator.msSaveOrOpenBlob) {
-    //         window.navigator.msSaveBlob(blob, filename);
-    //     } else {
-    //         const elem = window.document.createElement('a');
-    //         elem.href = canvas.toDataURL();
-    //         elem.download = filename;
-    //         document.body.appendChild(elem);
-    //         elem.click();
-    //         document.body.removeChild(elem);
-    //         // console.log(canvas.toDataURL())
-    //     }
-    // }
+    function save(filename, data) {
+        const blob = new Blob([data], { type: "png" });
+        if (window.navigator.msSaveOrOpenBlob) {
+            window.navigator.msSaveBlob(blob, filename);
+        } else {
+            const elem = window.document.createElement('a');
+            elem.href = canvas.toDataURL();
+            elem.download = filename;
+            document.body.appendChild(elem);
+            elem.click();
+            document.body.removeChild(elem);
+            // console.log(canvas.toDataURL())
+        }
+    }
 
     // const canvas = createCanvas(700, 700, "svg")
     // QRCode.toCanvas(canvas, orcidSvgData, { width: 500, errorCorrectionLevel: 'H', type: "svg" })
@@ -199,8 +201,8 @@ function Orcid() {
                     elevation={0}
                     variant="outlined"
                     sx={{
-                        m: 2,
-                        p: 4,
+                        m: 1,
+                        p: 2,
                         border: "1px solid grey",
                         height: 300,
 
@@ -208,14 +210,14 @@ function Orcid() {
                 >
                     <Grid container spacing={2} alignItems="center">
 
-                        <Grid item xs={12}>
-                            <Typography variant='h4' align="center" >
+                        <Grid item xs={12} >
+                            <Typography variant='h4' align="center" justify="center" >
                                 ORCID ID QR Code Generator
                             </Typography>
                         </Grid>
 
-                        <Grid item xs={2}>
-                            <Typography variant='h5'>
+                        <Grid item xs={2} container>
+                            <Typography variant='h6'>
                                 https://orcid.org/
                             </Typography>
                         </Grid>
@@ -241,15 +243,21 @@ function Orcid() {
                             </Button>
                         </Grid>
 
-                        <Grid item xs={8} container spacing={2} >
-                            <Stack spacing={1} direction="row" justifyContent="flex-end" >
-                                <Button variant="outlined" href="#contained-buttons" onClick={addorcid} >
-                                    Save
-                                </Button>
-                                <Button variant="outlined" onClick={generateOrcid}>
-                                    Generate ORCID qrcode
-                                </Button>
-                            </Stack>
+                        <Grid item xs={8} >
+                            <Box textAlign='end'>
+                                <ButtonGroup
+                                    disableElevation
+                                    variant="outlined"
+                                    aria-label="Disabled elevation buttons"
+                                >
+                                    <Button variant="outlined" onClick={addorcid} >
+                                        Save
+                                    </Button>
+                                    <Button variant="outlined" onClick={generateOrcid}>
+                                        Generate ORCID qrcode
+                                    </Button>
+                                </ButtonGroup>
+                            </Box>
                         </Grid>
                         {/* <QRCodeCanvas value={myVCard.toString()} size={60.472441} /> */}
                     </Grid>
@@ -261,8 +269,8 @@ function Orcid() {
                     elevation={0}
                     variant="outlined"
                     sx={{
-                        m: 2,
-                        p: 4,
+                        m: 1,
+                        p: 2,
                         border: "1px solid grey",
                         height: 300
                     }}
@@ -283,9 +291,9 @@ function Orcid() {
                     </Typography>
 
                     <Typography align="center">
-                        <Button variant="outlined" >
-                        {/* <Button variant="outlined" onClick={() => {save("abc", )}}> */}
-                            
+                        {/* <Button variant="outlined" > */}
+                        <Button variant="outlined" onClick={() => { save("qrcode.png",) }}>
+
                             Download ORCID qrcode
                         </Button>
                     </Typography>

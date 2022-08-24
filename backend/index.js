@@ -53,7 +53,7 @@ app.post('/create', (req, res) => {
                 console.log(err)
             } else {
                 // res.send("Values Inserted")
-                res.status(200).send({ firstname })
+                res.status(200).send({ firstname, lastname, department, jobtitle, email, officephonenumber, mobilephonenumber, address, language })
             }
         }
     );
