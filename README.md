@@ -10,4 +10,31 @@ This page is generator page, user can input their information. :point_down:
 Finish input the information, usre can click the save button. :point_down:
 ![readme_img](images/readMe2.png) 
 
-The data can save it to database.
+The data can save it to database. :point_down:
+![readme_img](images/readMe3.png) 
+
+Beside the "Save" button, there have a button call "Genrate vCard qrcode", user can check the qrcode first in this page. Also you can use your :iphone: to scan this rqcode, it can save the same information to your mobile phone connect. It is quite fun :sunglasses: :point_down:
+![readme_img](images/readMe4.png) 
+
+After that, user can go back to home page to check the record. :point_down:
+![readme_img](images/readMe5.png) 
+![readme_img](images/readMe6.png) 
+
+In this record, it can keep the qrcode. :point_down:
+![readme_img](images/readMe7.png) 
+
+If have something wrong, it can edit the data. :point_down:
+![readme_img](images/readMe8.png) 
+
+The data was edited. :point_down:
+![readme_img](images/readMe9.png) 
+![readme_img](images/readMe10.png) 
+
+You can scan the qrcode, to check the data. :point_down: 
+![readme_img](images/readMe11.png) 
+
+In Mysql database, the data was edited. :point_down:
+![readme_img](images/readMe12.png) 
+
+Also it can delete the data. :point_down:
+![readme_img](images/readMe13.png)
