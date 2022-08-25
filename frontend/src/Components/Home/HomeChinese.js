@@ -46,9 +46,9 @@ function HomeChinese() {
 
     const getOrganization = (language) => {
         if (language === "Chinese") {
-            return "香港理工大學";
+            return "香港資訊科技";
         } else if (language === "English") {
-            return "The Hong Kong Polytechnic University";
+            return "Hong Kong Information Technology";
         } else {
             return ""
         }
@@ -352,7 +352,7 @@ function HomeChinese() {
                                     id="Organization"
                                     label="組織"
                                     size="small"
-                                    defaultValue="The Hong Kong Polytechnic University"
+                                    defaultValue="香港資訊科技"
                                     multiline
                                     maxRows={2}
                                     onChange={(event) => { setNewOrganization(event.target.value); }}

@@ -83,9 +83,9 @@ function Home() {
 
     const getOrganization = (language) => {
         if (language === "Chinese") {
-            return "香港理工大學";
+            return "香港資訊科技";
         } else if (language === "English") {
-            return "The Hong Kong Polytechnic University";
+            return "Hong Kong Information Technology";
         } else {
             return ""
         }
@@ -144,7 +144,7 @@ function Home() {
             p: 4,
             borderRadius: 5,
             border: 1.5,
-            borderColor: "#A02337",
+            borderColor: "#5A8F7B",
         };
 
         const styleEdit = {
@@ -159,7 +159,7 @@ function Home() {
             p: 4,
             borderRadius: 5,
             border: 1.5,
-            borderColor: "#A02337",
+            borderColor: "#5A8F7B",
         };
 
         const [open, setOpen] = React.useState(false);
