@@ -13,7 +13,8 @@ Finish input the information, usre can click the save button. :point_down:
 The data can save it to database. :point_down:
 ![readme_img](images/readMe3.png) 
 
-Beside the "Save" button, there have a button call "Genrate vCard qrcode", user can check the qrcode first in this page. Also you can use your :iphone: to scan this rqcode, it can save the same information to your mobile phone connect. It is quite fun :sunglasses: :point_down:
+Beside the "Save" button, there have a button call "Genrate vCard qrcode", user can check the qrcode first in this page. Also you can use your :iphone: to scan this rqcode, it can save the same information to your mobile phone connect. It is quite fun :sunglasses: 
+:bell: If you scanned it nothing happened, you can click the image to enlarge, and try again. :bell: :point_down:
 ![readme_img](images/readMe4.png) 
 
 After that, user can go back to home page to check the record. :point_down:
