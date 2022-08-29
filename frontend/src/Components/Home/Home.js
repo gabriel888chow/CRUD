@@ -81,15 +81,7 @@ function Home() {
     //     });
     // }
 
-    const getOrganization = (language) => {
-        if (language === "Chinese") {
-            return "香港資訊科技";
-        } else if (language === "English") {
-            return "Hong Kong Information Technology";
-        } else {
-            return ""
-        }
-    }
+    
 
     // const qrcodePost = async (id) => {
     //     await Axios.post(`http://localhost:8080/qrcode/${id}`).then((response) => {
@@ -103,12 +95,7 @@ function Home() {
     //     });
     // };
 
-    const renderOrganization = (props) => {
-        const isOrgenizationInChinese = props.row.language;
-        return (
-            getOrganization(isOrgenizationInChinese)
-        )
-    }
+
 
 
 
@@ -132,35 +119,7 @@ function Home() {
         // }, [])
 
 
-        const style = {
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 400,
-            bgcolor: 'background.paper',
-            border: '2px solid #000',
-            boxShadow: 5,
-            p: 4,
-            borderRadius: 5,
-            border: 1.5,
-            borderColor: "#5A8F7B",
-        };
 
-        const styleEdit = {
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 1000,
-            height: 320,
-            bgcolor: 'background.paper',
-            boxShadow: 5,
-            p: 4,
-            borderRadius: 5,
-            border: 1.5,
-            borderColor: "#5A8F7B",
-        };
 
         const [open, setOpen] = React.useState(false);
         const handleOpen = () => {
@@ -192,6 +151,36 @@ function Home() {
             }
         }, [hasFocus]);
 
+        const style = {
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            bgcolor: 'background.paper',
+            border: '2px solid #000',
+            boxShadow: 5,
+            p: 4,
+            borderRadius: 5,
+            border: 1.5,
+            borderColor: "#5A8F7B",
+        };
+
+        const styleEdit = {
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 1000,
+            height: 320,
+            bgcolor: 'background.paper',
+            boxShadow: 5,
+            p: 4,
+            borderRadius: 5,
+            border: 1.5,
+            borderColor: "#5A8F7B",
+        };
+
 
         return (
             <>
@@ -202,7 +191,7 @@ function Home() {
                     variant="outlined"
                     size="small"
                     style={{ marginLeft: 16 }}
-                    // Remove button from tab sequence when cell does not have focus
+                    Remove button from tab sequence when cell does not have focus
                     tabIndex={hasFocus ? 0 : -1}
                     onKeyDown={(event) => {
                         if (event.key === ' ') {
@@ -593,7 +582,22 @@ function Home() {
     // };
 
     // --------------------------------------------Button in Delete--------------------------------------------
+    const getOrganization = (language) => {
+        if (language === "Chinese") {
+            return "香港資訊科技";
+        } else if (language === "English") {
+            return "Hong Kong Information Technology";
+        } else {
+            return ""
+        }
+    }
 
+    const renderOrganization = (props) => {
+        const isOrgenizationInChinese = props.row.language;
+        return (
+            getOrganization(isOrgenizationInChinese)
+        )
+    }
 
     const columns1 = [
         { field: 'id', headerName: 'ID', width: 70 },

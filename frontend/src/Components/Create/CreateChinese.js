@@ -169,10 +169,9 @@ function CreateChinese() {
                 urladdress: urladdress,
                 address: address,
                 language: "Chinese"
-            })).then(() => {
-                console.log("success addvcardChinese", firstname);
+            })).then(
                 alert("Data Updated Successfully!!")
-            });
+            );
         };
     };
 

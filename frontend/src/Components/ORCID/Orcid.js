@@ -216,13 +216,13 @@ function Orcid() {
                             </Typography>
                         </Grid>
 
-                        <Grid item xs={2} container>
+                        <Grid item xs={3} container>
                             <Typography variant='h6'>
                                 https://orcid.org/
                             </Typography>
                         </Grid>
 
-                        <Grid item xs={10} >
+                        <Grid item xs={9} >
                             <TextField
                                 required
                                 id="ORCID"
