@@ -400,7 +400,9 @@ function Home() {
                                     id="Organization"
                                     label="Organization"
                                     size="small"
-                                    defaultValue="Hong Kong Information Technology"
+                                    // TextField 包含帶有 value 和 defaultValue 屬性的 text 類型的輸入。輸入元素必須是受控或不受控的（指定 value 屬性或 defaultValue 屬性，但不能同時指定兩者）。決定使用受控或不受控的輸入元素並刪除這些道具之一。更多信息：https ://fb.me/react-controlled-components
+                                    // 如果要defaultValue 可以加係useState
+                                    // defaultValue="Hong Kong Information Technology"
                                     multiline
                                     maxRows={2}
                                     onChange={(event) => { setNewOrganization(event.target.value); }}
@@ -416,7 +418,9 @@ function Home() {
                                     id="URLaddress"
                                     label="URL Address"
                                     size="small"
-                                    defaultValue="www.hkit.com.hk"
+                                    // TextField 包含帶有 value 和 defaultValue 屬性的 text 類型的輸入。輸入元素必須是受控或不受控的（指定 value 屬性或 defaultValue 屬性，但不能同時指定兩者）。決定使用受控或不受控的輸入元素並刪除這些道具之一。更多信息：https ://fb.me/react-controlled-components
+                                    // 如果要defaultValue 可以加係useState
+                                    // defaultValue="www.hkit.com.hk"
                                     multiline
                                     maxRows={2}
                                     onChange={(event) => { setNewURLaddress(event.target.value); }}

@@ -7,14 +7,19 @@ import OrcidSvgReducer from "../Components/ORCID/OrcidSvgSlice";
 import CreateVcardSvgReducer from "../Components/Create/CreateSvgSlice";
 
 const store = configureStore({
-    reducer: { 
+    reducer: {
         vCardQrcodes: vCardReducer,
         HomePageRecord: HomePageReducer,
         orcidRecord: OrcidReducer,
         login: loginReducer,
         orcidSvgQrcode: OrcidSvgReducer,
         createVcardSvg: CreateVcardSvgReducer,
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+
+            serializableCheck: false,
+        }),
 });
 
 export default store;
